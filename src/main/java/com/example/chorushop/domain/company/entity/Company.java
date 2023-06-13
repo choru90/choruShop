@@ -1,4 +1,4 @@
-package com.example.chorushop.company.entity;
+package com.example.chorushop.domain.company.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,4 +31,12 @@ public class Company {
 
     @Column
     private String address;
+
+    public void update(String companyName, String companyNum, String representative, String bizType, String address){
+        this.companyName =  companyName;
+        this.companyNum = companyNum;
+        this.representative = representative;
+        this.bizType = bizType;
+        this.address = address;
+    }
 }

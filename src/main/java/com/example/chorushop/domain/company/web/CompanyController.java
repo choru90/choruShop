@@ -1,11 +1,10 @@
-package com.example.chorushop.company.web;
+package com.example.chorushop.domain.company.web;
 
-import com.example.chorushop.company.dto.CompanyReq;
-import com.example.chorushop.company.dto.CompanyRes;
-import com.example.chorushop.company.service.CompanyService;
+import com.example.chorushop.domain.company.dto.CompanyReq;
+import com.example.chorushop.domain.company.dto.CompanyRes;
+import com.example.chorushop.domain.company.service.CompanyService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,8 +38,8 @@ public class CompanyController implements CompanyContract {
 
     @Override
     @PatchMapping("/{id}")
-    public void update(@PathVariable(value = "id") Long id,CompanyReq req) {
-        service.update(req);
+    public CompanyRes update(@PathVariable(value = "id") Long id,CompanyReq req) {
+        return service.update(id, req);
     }
 
     @Override
