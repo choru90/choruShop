@@ -1,5 +1,7 @@
 package com.example.chorushop.domain.company.service;
 
+import com.example.chorushop.common.exception.RestApiException;
+import com.example.chorushop.common.exception.RestApiExceptionCode;
 import com.example.chorushop.domain.company.dto.CompanyReq;
 import com.example.chorushop.domain.company.dto.CompanyRes;
 import com.example.chorushop.domain.company.entity.Company;
@@ -75,7 +77,7 @@ public class CompanyServiceImpl implements CompanyService{
 
     private Company getCompanyById(Long id){
         return repository.findById(id)
-                .orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND, "해당 id의 회사 정보가 없습니다."));
+                .orElseThrow(() -> new RestApiException(RestApiExceptionCode.NOT_FOUND, "회사 정보가 없습니다."));
     }
 
     private List<Company> getCompanies(){
