@@ -2,7 +2,7 @@ package com.example.chorushop.domain.company.service;
 
 import com.example.chorushop.domain.company.dto.CompanyReq;
 import com.example.chorushop.domain.company.dto.CompanyRes;
-import org.springframework.data.domain.PageRequest;
+import com.example.chorushop.domain.company.entity.Company;
 
 import java.util.List;
 
@@ -17,4 +17,6 @@ public interface CompanyService {
      CompanyRes get(Long id);
 
      List<CompanyRes> getList();
+
+     Company getCompanyById(Long id);
 }
