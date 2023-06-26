@@ -13,13 +13,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -33,7 +30,7 @@ class CompanyIntegrationTest {
     @LocalServerPort
     int port;
 
-    @MockBean
+    @Autowired
     CompanyRepository repository;
 
     @Autowired
@@ -52,11 +49,6 @@ class CompanyIntegrationTest {
     @Test
     @DisplayName("company 생성 : 200")
     void createTest200(){
-        Long id = 1L;
-
-        doReturn(new Company(id,null, null, null, null, null))
-                .when(repository).save(any());
-
         ExtractableResponse<Response> result = RestUtils.request()
                                                         .body(getReq())
                                                         .log().all()
@@ -64,9 +56,7 @@ class CompanyIntegrationTest {
                                                         .post("/company")
                                                         .then().log().all().extract();
 
-        verify(repository, times(1)).save(any());
         assertEquals(HttpStatus.OK.value(), result.statusCode());
-        assertEquals(id, result.body().as(Long.class));
     }
     /*
     * update
@@ -78,8 +68,6 @@ class CompanyIntegrationTest {
     @DisplayName("company 수정 : 200 ")
     void updateTest200(){
         Company company = setUp.createCompany();
-
-        doReturn(Optional.of(company)).when(repository).findById(anyLong());
 
         ExtractableResponse<Response> result = RestUtils.request()
                 .body(getReq())
@@ -112,8 +100,6 @@ class CompanyIntegrationTest {
     void deleteTest200(){
         Company company = setUp.createCompany();
 
-        doReturn(Optional.of(company)).when(repository).findById(anyLong());
-
         ExtractableResponse<Response> result = RestUtils.request()
                 .body(getReq())
                 .log().all()
@@ -122,7 +108,6 @@ class CompanyIntegrationTest {
                 .then().log().all().extract();
 
         assertEquals(HttpStatus.OK.value(), result.statusCode());
-        verify(repository, times(1)).delete(any());
     }
 
     @Test
