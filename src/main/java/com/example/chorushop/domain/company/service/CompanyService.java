@@ -18,5 +18,5 @@ public interface CompanyService {
 
      List<CompanyRes> getList();
 
-     Company getCompanyById(Long id);
+
 }

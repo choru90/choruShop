@@ -75,7 +75,7 @@ public class CompanyServiceImpl implements CompanyService{
                 .toList();
     }
 
-    public Company getCompanyById(Long id){
+    private Company getCompanyById(Long id){
         return repository.findById(id)
                 .orElseThrow(() -> new RestApiException(RestApiExceptionCode.NOT_FOUND, "회사 정보가 없습니다."));
     }

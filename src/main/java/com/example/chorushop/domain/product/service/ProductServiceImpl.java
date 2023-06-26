@@ -6,17 +6,19 @@ import com.example.chorushop.domain.product.dto.ProductRes;
 import com.example.chorushop.domain.product.entity.Product;
 import com.example.chorushop.domain.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository repository;
 
     @Override
-    public Long create(Company company, ProductReq req) {
-        Product product = new Product(req.name(), req.price(), req.category(), company);
+    public Long create(Long companyId, ProductReq req) {
+        Product product = new Product(req.name(), req.price(), req.category(), companyId);
         return repository.save(product).getId();
     }
 

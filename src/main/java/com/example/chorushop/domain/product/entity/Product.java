@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Product extends BaseDateEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -24,14 +25,13 @@ public class Product extends BaseDateEntity {
     @Column
     private String category;
 
-    @ManyToOne
-    @JoinColumn(name = "company_id", insertable = false, updatable = false, nullable = false)
-    private Company company;
+    @Column
+    private Long companyId;
 
-    public Product(String name, Integer price, String category, Company company){
-        this.company = company;
+    public Product(String name, Integer price, String category, Long companyId){
         this.name = name;
         this.price = price;
         this.category = category;
+        this.companyId = companyId;
     }
 }
