@@ -20,3 +20,4 @@
 - Exception Handler 추가(2023-06-19)
 - 상품 domain 생성(2023-06-22) - controller, usecase, service의 구조를 어떻게 가져가야할지 고민이 필요함 => controller, usecase, service, repository로 구분하여서 개발
   => service내에서 JPA 연관관계로 묶여서 결합도가 높은 형태에서 각 도메인별로 필요의 데이터만 주고 받는 usecase를 사용해보기로함
+- 상품 등록 API 개발, 회사 통합테스트코드(IT)의 범위를 각 API를 호출하는 범위로 mocking이 아닌 실제 repository에서 실행되어지는지 확인하도록 변경(2023-06-23)
