@@ -15,5 +15,5 @@ public interface ProductService {
 
     ProductRes get(Long id);
 
-    List<ProductRes> getList();
+    List<ProductRes> getList(Long companyId);
 }

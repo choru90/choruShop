@@ -34,4 +34,10 @@ public class Product extends BaseDateEntity {
         this.category = category;
         this.companyId = companyId;
     }
+
+    public void update(String name, Integer price, String category){
+        this.name = name;
+        this.price = price;
+        this.category = category;
+    }
 }
