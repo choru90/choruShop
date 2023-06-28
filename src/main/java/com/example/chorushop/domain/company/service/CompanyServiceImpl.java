@@ -7,10 +7,8 @@ import com.example.chorushop.domain.company.dto.CompanyRes;
 import com.example.chorushop.domain.company.entity.Company;
 import com.example.chorushop.domain.company.repository.CompanyRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 
@@ -83,7 +81,7 @@ public class CompanyServiceImpl implements CompanyService{
     private List<Company> getCompanies(){
         List<Company> companies = repository.findAll();
         if(companies.isEmpty()){
-            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "회사 목록이 없습니다.");
+            throw new RestApiException(RestApiExceptionCode.NOT_FOUND, "회사 목록이 없습니다.");
         }
         return companies;
     }
