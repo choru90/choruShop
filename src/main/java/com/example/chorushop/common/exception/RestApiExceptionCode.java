@@ -10,6 +10,7 @@ public enum RestApiExceptionCode {
 
     NOT_FOUND(HttpStatus.NOT_FOUND, "ERROR-404");
 
+
     private HttpStatus status;
     private String code;
 
