@@ -49,6 +49,7 @@ task integrationTest(type: Test) {
     useJUnitPlatform{
         includeTags 'IntegrationTest'
         excludeTags 'UnitTest'
+        exclude 'com/example/chorushop/domain/company/web/data/**SetUp.class'
     }
 }
 
