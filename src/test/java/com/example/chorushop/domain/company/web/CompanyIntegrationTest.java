@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
         properties = "spring.profiles.active=test")
 @ActiveProfiles("test")
-@Tag("integration")
+@Tag("IntegrationTest")
 class CompanyIntegrationTest {
 
     @LocalServerPort
