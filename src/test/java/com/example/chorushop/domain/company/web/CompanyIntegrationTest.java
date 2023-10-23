@@ -9,10 +9,7 @@ import com.example.chorushop.utils.RestUtils;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -29,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
         properties = "spring.profiles.active=test")
 @ActiveProfiles("test")
+@Tag("integration")
 class CompanyIntegrationTest {
 
     @LocalServerPort
