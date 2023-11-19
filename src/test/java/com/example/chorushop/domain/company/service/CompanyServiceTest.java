@@ -40,7 +40,7 @@ class CompanyServiceTest {
         // when
         Long savedId = service.create(req);
         // then
-        assertEquals(id,savedId+1);
+        assertEquals(id,savedId);
         verify(repository).save(any());
     }
 }
