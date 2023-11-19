@@ -36,7 +36,7 @@ class CompanyServiceTest {
         // when
         Long savedId = service.create(req);
         // then
-        assertNotNull(savedId);
+        assertNotNull(savedId+1L);
         verify(repository).save(any());
     }
 }
