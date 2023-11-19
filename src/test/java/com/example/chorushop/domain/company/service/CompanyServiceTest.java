@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -39,7 +40,7 @@ class CompanyServiceTest {
         // when
         Long savedId = service.create(req);
         // then
-        assertNotNull(savedId);
+        assertEquals(id,savedId+1);
         verify(repository).save(any());
     }
 }
