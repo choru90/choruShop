@@ -3,6 +3,7 @@ package com.example.chorushop.domain.company.service;
 import com.example.chorushop.domain.company.dto.CompanyReq;
 import com.example.chorushop.domain.company.entity.Company;
 import com.example.chorushop.domain.company.repository.CompanyRepository;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -13,6 +14,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+
+@Tag("UnitTest")
 @ExtendWith(MockitoExtension.class)
 class CompanyServiceTest {
 
@@ -36,7 +39,7 @@ class CompanyServiceTest {
         // when
         Long savedId = service.create(req);
         // then
-        assertNotNull(savedId+1L);
+        assertNotNull(savedId);
         verify(repository).save(any());
     }
 }
