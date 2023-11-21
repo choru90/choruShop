@@ -1,1 +1,5 @@
 rootProject.name = 'choruShop'
+include 'product-domain-module'
+include 'choruShop-common'
+include 'choruShop-api'
+
